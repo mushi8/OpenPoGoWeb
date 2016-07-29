@@ -1,5 +1,5 @@
 'use strict';
-
+var lastseenPokemon = '';
 $(document).ready(function() {
   mapView.init();
   var socket = io.connect('http://' + document.domain + ':' + location.port + '/event');
@@ -367,6 +367,7 @@ var mapView = {
       if (data.latitude !== undefined) {
         if (user.catchables.hasOwnProperty(data.spawnpoint_id) === false) {
           poke_name = self.pokemonArray[data.pokemon_id - 1].Name;
+          lastseenPokemon = poke_name;
           self.log({
             message: "[" + self.settings.users[user_index] + "] " + poke_name + " appeared",
             color: "green-text"
@@ -408,7 +409,7 @@ var mapView = {
     } else {
       if (user.catchables !== undefined && Object.keys(user.catchables).length > 0) {
         self.log({
-          message: "[" + self.settings.users[user_index] + "] " + poke_name + " has been caught or fled"
+          message: "[" + self.settings.users[user_index] + "] " + lastseenPokemon + " has been caught or fled"
         });
         for (var key in user.catchables) {
           user.catchables[key].setMap(null);
