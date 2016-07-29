@@ -280,7 +280,7 @@ var mapView = {
 
         out = '<div class="items"><div class="row">';
         for (var i = 0; i < current_user_bag_items.length; i++) {
-          out += '<div class="col s12 m6 l3 center" style="float: left"><img src="image/items/' +
+          out += '<div class="col s12 m6 l3 center" style="float: left"><img src="./image/items/' +
             current_user_bag_items[i].inventory_item_data.item.item_id +
             '.png" class="item_img"><br><b>' +
             self.itemsArray[current_user_bag_items[i].inventory_item_data.item.item_id] +
@@ -378,7 +378,7 @@ var mapView = {
               lng: parseFloat(data.longitude)
             },
             icon: {
-              url: 'image/pokemon/' + self.pad_with_zeroes(data.pokemon_id, 3) + '.png',
+              url: './image/pokemon/' + self.pad_with_zeroes(data.pokemon_id, 3) + '.png',
               scaledSize: new google.maps.Size(70, 70)
             },
             zIndex: 4,
@@ -400,7 +400,7 @@ var mapView = {
             lng: parseFloat(data.longitude)
           });
           user.catchables[data.spawnpoint_id].setIcon({
-            url: 'image/pokemon/' + self.pad_with_zeroes(data.pokemon_id, 3) + '.png',
+            url: './image/pokemon/' + self.pad_with_zeroes(data.pokemon_id, 3) + '.png',
             scaledSize: new google.maps.Size(70, 70)
           });
         }
@@ -575,7 +575,7 @@ var mapView = {
         pkmnIVS = sortedPokemon[i].stamina,
         candyNum = self.getCandy(pkmnNum, user_id);
 
-      out += '<div class="col s12 m6 l3 center"><img src="image/pokemon/' +
+      out += '<div class="col s12 m6 l3 center"><img src="./image/pokemon/' +
         pkmnImage +
         '" class="png_img"><br><b>' +
         pkmnName +
@@ -590,7 +590,7 @@ var mapView = {
         '</div>';
     }
     // Add number of eggs
-    out += '<div class="col s12 m4 l3 center" style="float: left;"><img src="image/pokemon/Egg.png" class="png_img"><br><b>You have ' + eggs + ' egg' + (eggs !== 1 ? "s" : "") + '</div>';
+    out += '<div class="col s12 m4 l3 center" style="float: left;"><img src="./image/pokemon/Egg.png" class="png_img"><br><b>You have ' + eggs + ' egg' + (eggs !== 1 ? "s" : "") + '</div>';
     out += '</div></div>';
     var nth = 0;
     out = out.replace(/<\/div><div/g, function (match, i, original) {
@@ -660,7 +660,7 @@ var mapView = {
         pkmnEnc = sortedPokedex[i].enc,
         pkmnCap = sortedPokedex[i].cap,
         candyNum = self.getCandy(pkmnNum, user_id);
-      out += '<div class="col s12 m6 l3 center"><img src="image/pokemon/' +
+      out += '<div class="col s12 m6 l3 center"><img src="./image/pokemon/' +
         pkmnImage +
         '" class="png_img"><br><b> ' +
         self.pad_with_zeroes(pkmnNum, 3) +
@@ -698,7 +698,7 @@ var mapView = {
                   lat: parseFloat(fort.latitude),
                   lng: parseFloat(fort.longitude)
                 },
-                icon: 'image/forts/img_pokestop.png'
+                icon: './image/forts/img_pokestop.png'
               });
             } else {
               self.forts[fort.id] = new google.maps.Marker({
@@ -707,7 +707,7 @@ var mapView = {
                   lat: parseFloat(fort.latitude),
                   lng: parseFloat(fort.longitude)
                 },
-                icon: 'image/forts/' + self.teams[(fort.owned_by_team || 0)] + '.png'
+                icon: './image/forts/' + self.teams[(fort.owned_by_team || 0)] + '.png'
               });
             }
             var fortPoints = '',
@@ -765,7 +765,7 @@ var mapView = {
           lat: parseFloat(data.lat),
           lng: parseFloat(data.lng)
         },
-        icon: 'image/trainer/' + self.trainerSex[randomSex] + Math.floor(Math.random() * self.numTrainers[randomSex]) + '.png',
+        icon: './image/trainer/' + self.trainerSex[randomSex] + Math.floor(Math.random() * self.numTrainers[randomSex]) + '.png',
         zIndex: 2,
         label: self.settings.users[user_index],
         clickable: false
